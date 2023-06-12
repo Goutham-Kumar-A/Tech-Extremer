@@ -225,6 +225,7 @@ def main_ext():
             token = 'WghHqdJl9DDga7THj2XW76VcJklNfqqGX2g6Vv5gFZgkbl-qQvE8i8Ellr2GHzwyZS99Zw.'
             bard_api = Bard(token=token)
             var = bard_api.get_answer(sea)['content']
+            talk(var)
             print(var)
 
         def camera():
