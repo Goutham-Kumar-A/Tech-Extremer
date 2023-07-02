@@ -7,9 +7,10 @@ import webbrowser as wb
 import datetime
 import tkinter
 import os
+import pygame
 import customtkinter
 from pytube import YouTube
-
+os.system('cls')
 print('Developed with hard work by Tech Extremer aka Goutham Kumar A')
 
 # Extremer Assistant by Goutham Kumar A
@@ -20,7 +21,9 @@ Python 3.8
 and
 Run this code in terminal
 
-pip install bardapi wikipedia playsound pyautogui pyjokes pyttsx3 customtkinter pytube speechrecognition opencv-contrib-python cvzone mediapipe
+pip install bardapi wikipedia pyautogui pyjokes pyttsx3 customtkinter pytube speechrecognition opencv-contrib-python cvzone pygame
+and optional for more feature:
+pip install mediapipe
 
 That's It ! Now enjoy Extremer Assistant
 
@@ -32,6 +35,12 @@ a = int(input('Enter 0 for Male and 1 for Female '))
 engine = pyttsx3.init()
 voice = engine.getProperty('voices')
 engine.setProperty('voice', voice[a].id)
+
+
+def song(path):
+    pygame.mixer.init()
+    pygame.mixer.music.load(path)
+    pygame.mixer.music.play()
 
 
 def talk(text):
@@ -191,7 +200,8 @@ def main_ext():
             if cv2.waitKey(10) == ord('q'):
                 break
 
-    talk('Correct Password Redirecting you to Extremer Assistant')
+    talk('Correct Password')
+    talk('Redirecting you to Extremer Assistant')
     talk('If you want to read Manual Press 1 or else press 2')
     redirector = str(input('if you want to read Manual Press 1 or else press 2  '))
 
@@ -225,7 +235,6 @@ def main_ext():
             token = 'WghHqdJl9DDga7THj2XW76VcJklNfqqGX2g6Vv5gFZgkbl-qQvE8i8Ellr2GHzwyZS99Zw.'
             bard_api = Bard(token=token)
             var = bard_api.get_answer(sea)['content']
-            talk(var)
             print(var)
 
         def camera():
@@ -525,13 +534,6 @@ def main_ext():
                 print(random)
                 talk(random)
 
-        def play(path):
-            import cv2
-            from playsound import playsound
-            playsound(path)
-            play_show = 'Assests/SP.png'
-            cv2.imshow('Extremer Assistant', play_show)
-
         def ytdown():
             def start_download():
                 try:
@@ -669,7 +671,7 @@ def main_ext():
             print(tp)
 
         elif 'birthday' in asdf:
-            play('song/Happy Birthday.mp3')
+            song('song/happy_birthday.mp3')
 
         elif 'bard' in asdf:
             bard()
@@ -678,34 +680,34 @@ def main_ext():
             hanmou()
 
         elif 'centuries' in asdf:
-            play('song/Centuries.mp3')
+            song('song/centuries.mp3')
 
         elif 'enemy' in asdf:
-            play('song/Enemy.mp3')
+            song('song/enemy.mp3')
 
         elif 'kesariya' in asdf:
-            play('song/Kesariya.mp3.mp3')
+            song('song/kesariya.mp3')
 
         elif 'illegal weapon' in asdf:
-            play('song/Illegal Weapon.mp3')
+            song('song/illegal_weapon.mp3')
 
         elif 'kannada bhaashe' in asdf:
-            play('song/Kannada Bhaashe.mp3')
+            song('song/kannada_bhaashe.mp3')
 
         elif 'commands' in asdf:
             print_commands()
 
         elif 'nee sigoovaregu' in asdf:
-            play('song/Nee Sigoovaregu.m4a')
+            song('song/nee_sigoovaregu.m4a')
 
         elif 'feel invincible' in asdf:
-            play('song/Feel Invincible.mp3')
+            song('song/feel_invincible.mp3')
 
         elif 'finish line' in asdf:
-            play('song/Finish Line.mp3.mp3')
+            song('song/finish_line.mp3')
 
         elif 'the boys' in asdf:
-            play('song/The Boys.mp3')
+            song('song/the_boys.mp3')
 
         elif 'shutdown' in asdf:
             main_2 = str(input('Enter Time for Trigger'))
@@ -731,25 +733,25 @@ def main_ext():
                 os.system('shutdown -h')
 
         elif 'uri medley' in asdf:
-            os.system('vlc %USERPROFILE%\\Extremer Assistant')
+            song('song/uri_medley.m4a')
 
         elif 'hymn for the weekend' in asdf:
-            play('song/hftw.mp3')
+            song('song/hftw.mp3')
 
         elif 'memories' in asdf:
-            play('song/memories.mp3')
+            song('song/memories.mp3')
 
         elif 'shape of you' in asdf:
-            play('song/shape_of_you.mp3')
+            song('song/shape_of_you.mp3')
 
         elif 'unstoppable' in asdf:
-            play('song/unstoppable.mp3')
+            song('song/unstoppable.mp3')
 
         elif 'believer' in asdf:
-            play('song/believer.mp3')
+            song('song/believer.mp3')
 
         elif 'antifragile' in asdf:
-            play('song/antifragile.mp3')
+            song('song/antifragile.mp3')
 
         elif 'exit' in asdf:
             thankyou = 'Thank You For using Extremer Assistant'
@@ -761,6 +763,9 @@ def main_ext():
             talk('What do you want me to say ?')
             asd_var = str(input('What do you want me to say ?'))
             talk(asd_var)
+
+        elif 'stop music' in asdf:
+            pygame.mixer.music.stop()
 
         elif 'screen record' in asdf:
             screen_record()
@@ -801,5 +806,5 @@ else:
 Logs are Written here from 12/6/2023
 
 12/6/2023 = Created a new GUI Calculator and added it under Extremer Calculator(cal), Fixed a few bugs around in input spaces
-Created a Playsound definition and got errors have to fix it
+Created a song definition and got errors have to fix it
 """
